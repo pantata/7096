@@ -3,7 +3,7 @@
 import sys
 import serial
 import time
-from PyQt4.QtGui import *
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QSpinBox, QCheckBox, QComboBox, QPushButton
 
 
 class Settings:
@@ -366,7 +366,7 @@ class MainWindow(QWidget):
 
         # The Save button
         savebutton = QPushButton('Save', self)
-        savebutton.move(400, 530)
+        savebutton.move(380, 530)
         savebutton.clicked.connect(self.save)
 
         # Show the main window
