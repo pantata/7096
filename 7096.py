@@ -3,8 +3,7 @@
 import sys
 import serial
 import time
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QSpinBox, QCheckBox, QComboBox, QPushButton
-
+from PyQt5.QtWidgets import  QApplication, QWidget, QLabel, QSpinBox, QCheckBox, QComboBox, QPushButton
 
 class Settings:
     def __init__(self, str):
@@ -116,7 +115,7 @@ class MainWindow(QWidget):
 
     def __init__(self):
         super(MainWindow, self).__init__()
-
+        
         # Use serial port specified on command line, or /dev/ttyUSB0 if none specified
         if len(sys.argv) > 1:
             port = sys.argv[1]
@@ -124,6 +123,8 @@ class MainWindow(QWidget):
             port = '/dev/ttyUSB0'
 
         # Open serial port and do initialization sequence needed to wake up 7096
+        
+        '''
         self.ser = serial.Serial(port=port, baudrate=19200, timeout=0.25, rtscts=False, dsrdtr=False)
         self.ser.setRTS(0)
         self.ser.setDTR(0)
@@ -131,7 +132,7 @@ class MainWindow(QWidget):
         time.sleep(0.1)
         self.ser.setRTS(0)
         time.sleep(0.5)
-
+        
         # Get model number and firmware version
         self.ser.write(b'\x02?\x03\r')
         r = self.get_responce()
@@ -145,6 +146,10 @@ class MainWindow(QWidget):
         self.settings = Settings(r.decode('UTF-8'))
 
         print("Current settings: %s" % self.settings)
+        '''
+        r = "0000000000000"
+        self.settings = Settings("0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;")
+        model = "7096"
 
         # Initialize the main window
         self.resize(480, 570)
