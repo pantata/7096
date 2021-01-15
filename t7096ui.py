@@ -10,7 +10,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -71,6 +70,7 @@ class Ui_MainWindow(object):
         self.foodtimer.setMinimum(1)
         self.foodtimer.setMaximum(15)
         self.foodtimer.setObjectName("foodtimer")
+        self.foodtimer.setValue(10)
         self.gridLayout_3.addWidget(self.foodtimer, 0, 1, 1, 1)
         self.label_9 = QtWidgets.QLabel(self.groupBox)
         self.label_9.setObjectName("label_9")
@@ -160,7 +160,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1)
         self.ramp = QtWidgets.QDoubleSpinBox(self.power_control)
         self.ramp.setDecimals(1)
-        self.ramp.setMaximum(5.0)
+        self.ramp.setMaximum(5)
         self.ramp.setSingleStep(0.1)
         self.ramp.setObjectName("ramp")
         self.gridLayout.addWidget(self.ramp, 1, 1, 1, 1)
