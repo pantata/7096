@@ -361,6 +361,12 @@ class t7096App(QtWidgets.QMainWindow, t7096ui.Ui_MainWindow):
         if self.ramp.value() >= maxramptime: 
             self.ramp.setValue(maxramptime)
 
+    def pwrValidator(self,input):
+        if input.value() == 29:
+            input.setValue(0)
+        if (input.value() > 0) and (input.value() < 31):
+            input.setValue(30)
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -382,6 +388,16 @@ class t7096App(QtWidgets.QMainWindow, t7096ui.Ui_MainWindow):
         self.radioSeq.toggled.connect(lambda:self.on_modeSwitch(self.radioSeq))
 
         self.radioPulse.toggle()
+
+        self.pwr1_1.valueChanged.connect(lambda:self.pwrValidator(self.pwr1_1))
+        self.pwr1_2.valueChanged.connect(lambda:self.pwrValidator(self.pwr1_2))
+        self.pwr1_3.valueChanged.connect(lambda:self.pwrValidator(self.pwr1_3))
+        self.pwr1_4.valueChanged.connect(lambda:self.pwrValidator(self.pwr1_4))
+
+        self.pwr2_1.valueChanged.connect(lambda:self.pwrValidator(self.pwr2_1))
+        self.pwr2_2.valueChanged.connect(lambda:self.pwrValidator(self.pwr2_2))
+        self.pwr2_3.valueChanged.connect(lambda:self.pwrValidator(self.pwr2_3))
+        self.pwr2_4.valueChanged.connect(lambda:self.pwrValidator(self.pwr2_4))
 
         #other stuff
         self.ramp.valueChanged.connect(lambda:self.rampValidator(self.ramp))
